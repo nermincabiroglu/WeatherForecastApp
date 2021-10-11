@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
+    <string name="api_key">API Key</string>
+    <string name="enter">Enter</string>
 </resources>
