@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +49,10 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),"Uygulamayı kullanmak için\nkonum izinlerini onaylayın",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+            if (currentLocation == null){
+                Toast.makeText(requireContext(),"Lokasyon Bilginiz Alınamadı",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val text: String = binding.textInputLayout.editText?.text.toString()
             if (text.isNullOrEmpty()) {
                 binding.textInputLayout.error = "Api key boş olamaz"
@@ -58,7 +61,6 @@ class HomeFragment : Fragment() {
             binding.textInputLayout.error = ""
             getView()?.let { it1 -> KeyboardHelper.hideKeyboard(requireActivity(), it1) }
             viewModel.setApiKey(text)
-            Log.e("TAG", "onViewCreated:$text")
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDashboardFragment(currentLocation))
         }
         super.onViewCreated(view, savedInstanceState)
@@ -98,8 +100,6 @@ class HomeFragment : Fragment() {
                 for (location in locationResult.locations) {
                     if (location != null) {
                         currentLocation = location
-                        Log.e("TAG", "getMyLocation: "+ currentLocation!!.latitude)
-
                     }
                 }
             }
