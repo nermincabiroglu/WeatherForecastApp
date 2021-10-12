@@ -37,7 +37,9 @@ class WeatherRecyclerViewAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun addAllItems(items:List<DailyWeatherReport>){
+        dailyWeatherReportList.clear()
         dailyWeatherReportList.addAll(items)
+
         notifyDataSetChanged()
     }
 

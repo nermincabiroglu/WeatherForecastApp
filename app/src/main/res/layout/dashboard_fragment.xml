@@ -1,147 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout">
-
+    android:id="@+id/swipe_refresh_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintToolBar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/layout"
-        app:layout_constraintVertical_bias="0">
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:drawablePadding="-10dp"
-            android:drawableTintMode="add"
-            android:fontFamily="@font/lato"
-            android:text="@string/back"
-            android:textAllCaps="false"
-            android:textColor="@color/gray_100"
-            android:textSize="17sp"
-            app:icon="@drawable/ic_back"
-            app:iconPadding="-10dp"
-            app:iconTint="@color/gray_100"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/layout">
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:text="@string/weather_app_str"
-            android:textColor="#47525E"
-            android:textSize="18sp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/layout"
+            app:layout_constraintVertical_bias="0">
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0.33dp"
-            android:background="@color/divider_color"
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawablePadding="-10dp"
+                android:drawableTintMode="add"
+                android:fontFamily="@font/lato"
+                android:text="@string/back"
+                android:textAllCaps="false"
+                android:textColor="@color/gray_100"
+                android:textSize="17sp"
+                app:icon="@drawable/ic_back"
+                app:iconPadding="-10dp"
+                app:iconTint="@color/gray_100"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/weather_app_str"
+                android:textColor="#47525E"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.33dp"
+                android:background="@color/divider_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintToolBar"
-        app:layout_constraintVertical_bias="0.1">
-
-
-        <TextView
-            android:id="@+id/locationTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="#47525E"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toTopOf="@+id/currentWeatherImageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintToolBar"
+            app:layout_constraintVertical_bias="0.1">
+
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="#47525E"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@+id/currentWeatherImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <ImageView
+                android:id="@+id/currentWeatherImageView"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toTopOf="@+id/currentWeatherTempTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/locationTextView"
+                app:layout_constraintVertical_chainStyle="spread"
+                android:contentDescription="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/currentWeatherTempTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:textSize="50sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/currentWeatherImageView"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginHorizontal="19dp"
+            android:id="@+id/weatherRecyclerView"
+            app:layout_constraintVertical_bias="0.05"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="@android:style/Widget.Holo.ProgressBar.Small"
+            android:id="@+id/loading_progressbar"
+            android:layout_width="50dp"
+            android:indeterminate="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread" />
-
-        <ImageView
-            android:id="@+id/currentWeatherImageView"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toTopOf="@+id/currentWeatherTempTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/locationTextView"
-            app:layout_constraintVertical_chainStyle="spread"
-            android:contentDescription="@string/app_name" />
-
-
-        <TextView
-            android:id="@+id/currentWeatherTempTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/currentWeatherImageView"
-            app:layout_constraintVertical_chainStyle="spread" />
+            android:layout_height="50dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginHorizontal="19dp"
-        android:id="@+id/weatherRecyclerView"
-        app:layout_constraintVertical_bias="0.05"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <androidx.core.widget.ContentLoadingProgressBar
-        style="@android:style/Widget.Holo.ProgressBar.Small"
-        android:id="@+id/loading_progressbar"
-        android:layout_width="50dp"
-        android:indeterminate="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="50dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

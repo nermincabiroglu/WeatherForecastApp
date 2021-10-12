@@ -22,6 +22,12 @@
         android:name="com.kemanci.weatherforecast.ui.dashboard_fragment.DashboardFragment"
         tools:layout="@layout/dashboard_fragment"
         android:label="Dashboard Fragment">
+
+        <argument
+            app:argType="android.location.Location"
+            android:name="location"
+            app:nullable="true"
+            />
     </fragment>
 
 </navigation>
