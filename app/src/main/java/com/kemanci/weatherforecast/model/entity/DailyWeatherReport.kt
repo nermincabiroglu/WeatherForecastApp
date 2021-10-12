@@ -55,7 +55,7 @@ data class DailyWeatherReport(
     var clouds: Long,
 
     @SerializedName("pop")
-    var pop: Long,
+    var pop: Double,
 
     @SerializedName("rain")
     var rain: Double,

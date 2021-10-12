@@ -5,6 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout">
 
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintToolBar"
         android:layout_width="match_parent"
@@ -17,6 +20,7 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:drawablePadding="-10dp"
@@ -77,7 +81,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
-            android:text="İstanbul, TR"
             android:textColor="#47525E"
             android:textSize="17sp"
             app:layout_constraintBottom_toTopOf="@+id/currentWeatherImageView"
@@ -92,14 +95,13 @@
             android:layout_width="70dp"
             android:layout_height="60dp"
             android:scaleType="centerInside"
-            android:src="@drawable/sample_weather_asset"
             app:layout_constraintBottom_toTopOf="@+id/currentWeatherTempTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTextView"
-
-            app:layout_constraintVertical_chainStyle="spread" />
+            app:layout_constraintVertical_chainStyle="spread"
+            android:contentDescription="@string/app_name" />
 
 
         <TextView
@@ -107,7 +109,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="5˚"
             android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,5 +131,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        style="@android:style/Widget.Holo.ProgressBar.Small"
+        android:id="@+id/loading_progressbar"
+        android:layout_width="50dp"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="50dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

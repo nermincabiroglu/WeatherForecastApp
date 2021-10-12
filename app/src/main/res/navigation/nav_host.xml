@@ -2,19 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/dashboard_fragment"
+    app:startDestination="@id/home_fragment"
     android:id="@+id/nav_host">
 
-    <fragment
-        android:id="@+id/splash_fragment"
-        android:name="com.kemanci.weatherforecast.ui.splash_fragment.SplashFragment"
-        tools:layout="@layout/splash_fragment"
-        android:label="Splash Fragment">
-        <action
-            app:popUpToInclusive="true"
-            android:id="@+id/action_splash_fragment_to_home_fragment"
-            app:destination="@id/home_fragment" />
-    </fragment>
+
 
     <fragment
         android:id="@+id/home_fragment"

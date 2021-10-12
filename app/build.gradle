@@ -78,6 +78,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     implementation ("com.github.bumptech.glide:recyclerview-integration:4.11.0") {
-        transitive = false
+        transitive = true
     }
 }

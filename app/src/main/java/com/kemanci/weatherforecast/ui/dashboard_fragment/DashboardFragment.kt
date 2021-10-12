@@ -1,65 +1,75 @@
 package com.kemanci.weatherforecast.ui.dashboard_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.kemanci.weatherforecast.R
 import com.kemanci.weatherforecast.databinding.DashboardFragmentBinding
-import com.kemanci.weatherforecast.model.entity.DailyWeatherReport
-import com.kemanci.weatherforecast.model.entity.FeelsLikeTemperature
-import com.kemanci.weatherforecast.model.entity.Temperature
-import com.kemanci.weatherforecast.model.entity.Weather
-import com.kemanci.weatherforecast.utils.TimeUtil
-import java.text.SimpleDateFormat
-import java.util.*
+import com.kemanci.weatherforecast.model.entity.*
+import com.kemanci.weatherforecast.utils.Constants
+import com.kemanci.weatherforecast.utils.Resource.Status.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.collections.ArrayList
 
+
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
     private lateinit var binding:DashboardFragmentBinding
     private val dailyWeatherReportList: ArrayList<DailyWeatherReport> = ArrayList()
     private lateinit var weatherRecyclerViewAdapter: WeatherRecyclerViewAdapter
+
+    private val viewModel:DashboardViewModel by viewModels()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DashboardFragmentBinding.inflate(inflater,container,false)
         weatherRecyclerViewAdapter = WeatherRecyclerViewAdapter(
             dailyWeatherReportList = dailyWeatherReportList,
             context = requireContext()
         )
-
-        val fakeW = Weather(id=0,main = "Rain",description = "orta şiddetli yağmur",icon_url = "10d")
-        val fakeData:DailyWeatherReport = DailyWeatherReport(
-            dt = 1634029200,
-            sunrise = 1634011921,
-            sunset = 1634052526,
-            moonrise = 1634036880,
-            moonset = 1634069220,
-            moonPhase = 0.22,
-            temp = Temperature(day=21.2, min=17.03, max=21.2, night=17.03, eve=19.25, morn=17.72),
-            feelsLike = FeelsLikeTemperature(day=20.99 , night=16.96 , eve=19.24 , morn=17.66),
-            pressure = 1008,
-            humidity = 62,
-            dewPoint = 13.64,
-            windSpeed = 7.82,
-            windDeg = 187,
-            windGust = 0.0,
-            weather = listOf(fakeW),
-            clouds = 0,
-            pop = 1,
-            rain = 0.0,
-            uvi = 1.1
-        )
-        weatherRecyclerViewAdapter.addItem(fakeData)
-        weatherRecyclerViewAdapter.addItem(fakeData)
-        weatherRecyclerViewAdapter.addItem(fakeData)
         binding.weatherRecyclerView.adapter = weatherRecyclerViewAdapter
         binding.weatherRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        viewModel.getWeatherData(41.0151,28.9795).observe(viewLifecycleOwner,{
+            when(it.status){
+                SUCCESS -> {
+                    binding.loadingProgressbar.visibility = View.GONE
+                    weatherRecyclerViewAdapter.addAllItems(it.data!!.daily)
+                    setCurrentTemperatureContainer(it.data)
+                }
+                ERROR -> {
+                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_LONG).show()
+                    binding.loadingProgressbar.visibility = View.GONE
+                }
+                LOADING -> {
+                    binding.loadingProgressbar.visibility = View.VISIBLE
+                }
+            }
+        })
         super.onViewCreated(view, savedInstanceState)
+    }
+
+
+    fun setCurrentTemperatureContainer(data:WeatherReport){
+        binding.currentWeatherTempTextView.text = data.current.temp.toInt().toString().plus("˚")
+        binding.locationTextView.text = data.timezone.replace("/",", ")
+        val url:String = Constants.baseUrlForAssets.plus(data.current.weather.first().icon_url).plus("@4x.png")
+        Glide.with(binding.currentWeatherImageView.context).load(url).placeholder(
+            R.drawable.img_err).into(binding.currentWeatherImageView)
     }
 }
