@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="32dp">
+
+       <TextView
+           android:id="@+id/item_day_textview"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_weight="0"
+           android:text="Friday"
+           android:textSize="18sp"
+           android:fontFamily="@font/lato_bold"
+           android:textColor="@color/gray"
+           android:gravity="center"/>
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="1"/>
+
+       <ImageView
+           android:layout_marginHorizontal="5dp"
+           android:id="@+id/item_imageview"
+           android:layout_width="70dp"
+           android:layout_height="match_parent"
+           android:src="@drawable/sample_weather_asset"
+           android:layout_weight="0"/>
+
+       <TextView
+           android:layout_marginHorizontal="12dp"
+           android:id="@+id/item_daytime_textview"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="6˚"
+           android:textSize="18sp"
+           android:fontFamily="@font/lato_bold"
+           android:textColor="@color/gray"
+           android:gravity="center"
+           android:layout_weight="0"/>
+
+       <TextView
+           android:layout_marginHorizontal="15dp"
+           android:id="@+id/item_night_textview"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_weight="0"
+           android:text="1˚"
+           android:textSize="18sp"
+           android:fontFamily="@font/lato_bold"
+           android:textColor="@color/light_gray"
+           android:gravity="center"/>
+
+
+   </LinearLayout>
+
+   <View
+        android:layout_marginTop="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0.33dp"
+        android:background="@color/divider_color" />
+
+
+</LinearLayout>

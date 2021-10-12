@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WeatherForecast" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    <style name="Theme.WeatherForecast" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/teal_700</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -25,6 +25,6 @@
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
     </style>
-    <color name="mtrl_textinput_default_box_stroke_color" >@color/light_gray</color>
+    <color name="mtrl_textinput_default_box_stroke_color"  tools:override="true" >@color/light_gray</color>
 
 </resources>
