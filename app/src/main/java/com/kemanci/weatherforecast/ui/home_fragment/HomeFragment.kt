@@ -70,19 +70,8 @@ class HomeFragment : Fragment() {
     val locationPermissionRequest = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
-        when {
-            permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                ACCESS_FINE_LOCATION = true
-
-            }
-            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                ACCESS_COARSE_LOCATION = true
-            }
-            else -> {
-                ACCESS_FINE_LOCATION = false
-                ACCESS_COARSE_LOCATION = false
-            }
-        }
+        ACCESS_FINE_LOCATION = ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        ACCESS_COARSE_LOCATION = ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
       getMyLocation()
     }
 
